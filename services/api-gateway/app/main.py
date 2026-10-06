@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from database import get_db_connection
 
 app = FastAPI(
     title="Cybersecurity Threat Intelligence Platform",
@@ -18,4 +19,22 @@ def root():
 def health_check():
     return {
         "status": "healthy"
+    }
+
+@app.get("/threats")
+def get_threats():
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM threat_indicators")
+
+    threats = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return {
+        "count": len(threats),
+        "threats": threats
     }
