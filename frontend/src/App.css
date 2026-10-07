@@ -1,0 +1,117 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: #080d19;
+  color: #f4f7ff;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, #172d51 0, transparent 40%),
+    radial-gradient(circle at bottom right, #122d3a 0, transparent 38%),
+    #080d19;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  border: 1px solid #28364c;
+  border-radius: 20px;
+  background: rgba(15, 24, 41, 0.96);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.shield-icon {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  color: #52d6c8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 29px;
+  margin: 12px 0;
+}
+
+.subtitle {
+  color: #9aa9bf;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 15px 0 8px;
+  color: #dce5f4;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #35435a;
+  border-radius: 9px;
+  outline: none;
+  background: #0b1322;
+  color: white;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #52d6c8;
+}
+
+button {
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #38cbbb;
+  color: #07131c;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #65e5d7;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.login-message {
+  margin-top: 20px;
+  color: #52d6c8;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.footer-text {
+  margin-top: 28px;
+  color: #8190a7;
+  font-size: 12px;
+  text-align: center;
+}

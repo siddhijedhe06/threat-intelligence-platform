@@ -1,0 +1,51 @@
+services:
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+    container_name: threat-api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: host.docker.internal
+      DB_USER: root
+      DB_PASSWORD: "Root123"
+      DB_NAME: threat_intelligence_db
+    depends_on:
+      - analysis-service
+      - alert-service
+
+  analysis-service:
+    build:
+      context: ./services/analysis-service
+    container_name: threat-analysis-service
+    ports:
+      - "8001:8001"
+    environment:
+      DB_HOST: host.docker.internal
+      DB_USER: root
+      DB_PASSWORD: "Root123"
+      DB_NAME: threat_intelligence_db
+    depends_on:
+      - alert-service
+
+  alert-service:
+    build:
+      context: ./services/alert-service
+    container_name: threat-alert-service
+    ports:
+      - "8002:8002"
+    environment:
+      DB_HOST: host.docker.internal
+      DB_USER: root
+      DB_PASSWORD: "Root123"
+      DB_NAME: threat_intelligence_db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: threat-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - api-gateway

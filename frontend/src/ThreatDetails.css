@@ -1,0 +1,407 @@
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.threat-details-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #f5f7fb;
+  color: #1f2937;
+  padding: 30px 40px 60px;
+  box-sizing: border-box;
+}
+
+.details-header,
+.details-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.details-header {
+  margin-bottom: 25px;
+}
+
+.details-header > div:first-child {
+  width: 100%;
+}
+
+/* Buttons at top */
+
+.details-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin-bottom: 25px !important;
+}
+
+.details-actions p {
+  display: none !important;
+}
+
+.details-actions button {
+  width: auto !important;
+  min-width: 90px !important;
+  height: 42px !important;
+  padding: 0 18px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #1f3c88 !important;
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.details-actions button:first-child {
+  min-width: 190px !important;
+}
+
+.details-actions button:last-child {
+  background: #e74c3c !important;
+}
+
+.details-actions button:first-child:hover {
+  background: #162d68 !important;
+}
+
+.details-actions button:last-child:hover {
+  background: #c0392b !important;
+}
+
+/* Page title */
+
+.details-header h1 {
+  margin: 0 !important;
+  color: #1f2937 !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+}
+
+.details-header p {
+  margin: 6px 0 0 !important;
+  color: #64748b !important;
+  font-size: 15px !important;
+  text-align: left !important;
+}
+
+/* =========================================
+   THREAT OVERVIEW
+========================================= */
+
+.threat-overview {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  background: white !important;
+  padding: 25px 30px !important;
+  margin-bottom: 20px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07) !important;
+  box-sizing: border-box !important;
+}
+
+.details-label {
+  display: block !important;
+  margin-bottom: 7px !important;
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+}
+
+.threat-overview h2 {
+  margin: 0 !important;
+  color: #111827 !important;
+  font-size: 27px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  word-break: break-all !important;
+}
+
+/* =========================================
+   SEVERITY
+========================================= */
+
+.details-severity {
+  padding: 9px 20px !important;
+  border-radius: 20px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+.details-severity.critical {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+.details-severity.high {
+  background: #ffedd5 !important;
+  color: #c2410c !important;
+}
+
+.details-severity.medium {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+.details-severity.low {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.details-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.details-card {
+  width: 100% !important;
+  background: white !important;
+  padding: 25px 30px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07) !important;
+  box-sizing: border-box !important;
+}
+
+.details-card h3 {
+  margin: 0 0 18px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  color: #1f2937 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+}
+
+/* =========================================
+   DETAIL ROWS
+========================================= */
+
+.detail-row {
+  display: grid !important;
+  grid-template-columns: 38% 62% !important;
+  align-items: center !important;
+  min-height: 48px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.detail-row:last-child {
+  border-bottom: none !important;
+}
+
+.detail-row span {
+  padding: 12px 10px 12px 0 !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+
+.detail-row strong {
+  padding: 12px 0 12px 10px !important;
+  color: #1f2937 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  word-break: break-word !important;
+}
+
+/* =========================================
+   RISK CARD
+========================================= */
+
+.risk-card {
+  text-align: center !important;
+}
+
+.risk-card h3 {
+  text-align: left !important;
+}
+
+.risk-score-large {
+  margin-top: 5px !important;
+  color: #dc2626 !important;
+  font-size: 44px !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+}
+
+.risk-score-large span {
+  color: #64748b !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+}
+
+.risk-card > p {
+  margin: 7px 0 22px !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+}
+
+/* =========================================
+   RISK FACTORS
+========================================= */
+
+.risk-factors {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
+
+.risk-factors > div {
+  min-height: 85px !important;
+  padding: 12px 7px !important;
+  background: #f8fafc !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.risk-factors span {
+  color: #64748b !important;
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+}
+
+.risk-factors strong {
+  margin-top: 7px !important;
+  color: #1f3c88 !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description-text {
+  margin: 0 !important;
+  padding: 16px 18px !important;
+  background: #f8fafc !important;
+  border-left: 4px solid #1f3c88 !important;
+  border-radius: 6px !important;
+  color: #374151 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+  word-break: break-word !important;
+}
+
+/* =========================================
+   LOADING / ERROR
+========================================= */
+
+.details-message {
+  padding: 60px !important;
+  text-align: center !important;
+  color: #475569 !important;
+  font-size: 18px !important;
+}
+
+.details-error {
+  padding: 40px !important;
+  margin-bottom: 20px !important;
+  text-align: center !important;
+  color: #dc2626 !important;
+  font-size: 18px !important;
+}
+
+/* Error page button */
+
+.threat-details-page > button {
+  display: block !important;
+  margin: 0 auto !important;
+  padding: 10px 18px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #1f3c88 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .threat-details-page {
+    padding: 25px 20px 50px !important;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .risk-factors {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .threat-details-page {
+    padding: 20px 12px 40px !important;
+  }
+
+  .details-actions {
+    justify-content: flex-start !important;
+  }
+
+  .details-actions button:first-child {
+    min-width: 0 !important;
+  }
+
+  .details-header h1 {
+    font-size: 26px !important;
+  }
+
+  .threat-overview {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+    padding: 20px !important;
+  }
+
+  .details-card {
+    padding: 20px !important;
+  }
+
+  .detail-row {
+    grid-template-columns: 42% 58% !important;
+  }
+
+  .risk-factors {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

@@ -1,0 +1,436 @@
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  background: #080d19;
+  color: #f1f5fc;
+}
+
+.sidebar {
+  width: 245px;
+  flex-shrink: 0;
+  padding: 28px 18px;
+  border-right: 1px solid #253147;
+  background: #0c1423;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-size: 19px;
+  font-weight: 750;
+  margin-bottom: 42px;
+}
+
+.nav-heading,
+.eyebrow {
+  color: #52d6c8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.nav-heading {
+  margin: 0 0 14px 10px;
+}
+
+.nav-item {
+  padding: 13px 11px;
+  margin-bottom: 7px;
+  border-radius: 8px;
+  color: #9baac0;
+  font-size: 13px;
+}
+
+.nav-item.active {
+  background: #172c40;
+  color: #63e0d0;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 22px;
+  border-top: 1px solid #253147;
+}
+
+.user-avatar {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #214b5b;
+  color: #70e4d5;
+  font-weight: 700;
+}
+
+.user-info {
+  display: flex;
+  flex: 1;
+  min-width: 75px;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.user-info span {
+  color: #8999b0;
+  font-size: 11px;
+}
+
+.logout-button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid #35435a;
+  color: #d7e0ed;
+}
+
+.dashboard-main {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+}
+
+.topbar,
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar h1 {
+  margin: 8px 0 0;
+  font-size: 27px;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid #25483f;
+  border-radius: 20px;
+  color: #7de3bd;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #48d6a0;
+  border-radius: 50%;
+}
+
+.welcome-section {
+  margin: 32px 0 24px;
+}
+
+.welcome-section h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.welcome-section p,
+.panel-heading p {
+  margin: 0;
+  color: #8fa0b8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.stat-card,
+.panel {
+  border: 1px solid #26344a;
+  border-radius: 13px;
+  background: #101a2b;
+}
+
+.stat-card {
+  padding: 20px;
+}
+
+.stat-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.stat-icon.blue {
+  background: #1a3154;
+  color: #76b8ff;
+}
+
+.stat-icon.red {
+  background: #48232e;
+  color: #ff7e8c;
+}
+
+.stat-icon.orange {
+  background: #473421;
+  color: #ffc16d;
+}
+
+.stat-icon.purple {
+  background: #35294d;
+  color: #c5a5ff;
+}
+
+.stat-card p {
+  color: #a3b0c4;
+  font-size: 12px;
+  margin: 20px 0 8px;
+}
+
+.stat-card h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.panel {
+  padding: 22px;
+  min-width: 0;
+}
+
+.panel-heading {
+  margin-bottom: 25px;
+}
+
+.panel-heading h3,
+.insight-panel h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.severity-row {
+  margin: 21px 0;
+}
+
+.severity-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  font-size: 12px;
+}
+
+.severity-label span {
+  color: #b3bfd0;
+}
+
+.progress-track {
+  height: 7px;
+  background: #263348;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.progress-fill.critical {
+  background: #ff657b;
+}
+
+.progress-fill.high {
+  background: #ffa75e;
+}
+
+.progress-fill.medium {
+  background: #e8cf65;
+}
+
+.progress-fill.low {
+  background: #53d4ac;
+}
+
+.insight-icon {
+  color: #61dfd0;
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.insight-panel p {
+  color: #9cabc0;
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.risk-rule {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid #28364a;
+  font-size: 12px;
+}
+
+.risk-rule span {
+  color: #a4b1c5;
+}
+
+.risk-rule strong {
+  color: #6be0ce;
+}
+
+.threats-panel {
+  margin-top: 22px;
+}
+
+.count-badge,
+.severity-badge {
+  padding: 6px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.count-badge {
+  background: #35212b;
+  color: #ff9aa7;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+th {
+  padding: 13px 12px;
+  color: #899bb4;
+  font-weight: 600;
+  border-bottom: 1px solid #29364a;
+}
+
+td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #202d40;
+  color: #c5cfdd;
+}
+
+.indicator-cell {
+  color: #77dacf;
+  overflow-wrap: anywhere;
+}
+
+.critical-badge {
+  background: #48232e;
+  color: #ff8595;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 10px;
+  color: #9baac0;
+  font-size: 13px;
+}
+
+.empty-state span {
+  color: #58d9b0;
+  font-size: 28px;
+}
+
+.error-message {
+  margin: 18px 0;
+  padding: 13px;
+  border: 1px solid #87414c;
+  border-radius: 8px;
+  color: #ffabb5;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #080d19;
+  color: #66ded0;
+}
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar-bottom {
+    margin-top: 20px;
+  }
+
+  .dashboard-main {
+    padding: 20px 14px;
+  }
+
+  .stats-grid {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+.sidebar .nav-item {
+  width: 100%;
+  margin-top: 0;
+  border: 0;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.sidebar .nav-item:hover {
+  background: #172c40;
+  color: #63e0d0;
+}
+
