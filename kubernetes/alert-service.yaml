@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-service
+  namespace: threat-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alert-service
+  template:
+    metadata:
+      labels:
+        app: alert-service
+    spec:
+      containers:
+        - name: alert-service
+          image: ghcr.io/siddhijedhe06/threat-alert-service:latest
+          ports:
+            - containerPort: 8002
+          env:
+            - name: DB_HOST
+              value: host.docker.internal
+
+            - name: DB_USER
+              valueFrom:
+              secretKeyRef:
+              name: mysql-secret
+              key: DB_USER
+
+            - name: DB_PASSWORD
+              valueFrom:
+              secretKeyRef:
+              name: mysql-secret
+              key: DB_PASSWORD
+
+            - name: DB_NAME
+              valueFrom:
+              secretKeyRef:
+              name: mysql-secret
+              key: DB_NAME
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alert-service
+  namespace: threat-platform
+spec:
+  selector:
+    app: alert-service
+  ports:
+    - protocol: TCP
+      port: 8002
+      targetPort: 8002

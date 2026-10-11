@@ -13,41 +13,44 @@ function Threats({ onBack, onLogout, onSelectThreat }) {
   const username = sessionStorage.getItem("username") || "Analyst";
   const role = sessionStorage.getItem("role") || "Viewer";
 
-  useEffect(() => {
-    async function fetchThreats() {
-      const token = sessionStorage.getItem("access_token");
+  const fetchThreats = async () => {
+    const token = sessionStorage.getItem("access_token");
 
-      if (!token) {
+    if (!token) {
+      onLogout();
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/threats", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 401) {
         onLogout();
         return;
       }
 
-      try {
-        const response = await fetch("http://127.0.0.1:8000/threats", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+      const data = await response.json();
 
-        if (response.status === 401) {
-          onLogout();
-          return;
-        }
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.detail || "Failed to load threats.");
-        }
-
-        setThreats(data.threats || []);
-      } catch (err) {
-        setError(err.message || "Could not connect to the backend.");
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error(data.detail || "Failed to load threats.");
       }
-    }
 
+      setThreats(data.threats || []);
+    } catch (err) {
+      setError(err.message || "Could not connect to the backend.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchThreats();
   }, [onLogout]);
 
@@ -165,7 +168,7 @@ function Threats({ onBack, onLogout, onSelectThreat }) {
             </div>
             <button
               className="refresh-button"
-              onClick={() => window.location.reload()}
+              onClick={fetchThreats}
             >
               ↻ Refresh
             </button>

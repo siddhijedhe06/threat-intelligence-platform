@@ -58,52 +58,65 @@ const [selectedThreatId, setSelectedThreatId] = useState(null);
 
   if (token) {
     if (currentPage === "alerts") {
-  return (
-    <Alerts
-      onBack={() => setCurrentPage("dashboard")}
-      onLogout={logout}
-    />
-  );
-}
+      return (
+        <Alerts
+          onBack={() => setCurrentPage("dashboard")}
+          onLogout={logout}
+          onSelectThreat={(id) => {
+            setSelectedThreatId(id);
+            setCurrentPage("threat-details");
+          }}
+        />
+      );
+    }
 
-if (currentPage === "threat-details") {
-  return (
-    <ThreatDetails
-      threatId={selectedThreatId}
-      onBack={() => setCurrentPage("threats")}
-      onLogout={logout}
-    />
-  );
-}
+    if (currentPage === "threat-details") {
+      return (
+        <ThreatDetails
+          threatId={selectedThreatId}
+          onBack={() => setCurrentPage("threats")}
+          onNavigate={(page) => setCurrentPage(page)}
+          onLogout={logout}
+        />
+      );
+    }
 
-  if (currentPage === "threats") {
-  return (
-    <Threats
-      onBack={() => setCurrentPage("dashboard")}
-      onLogout={logout}
-      onSelectThreat={(id) => {
-        setSelectedThreatId(id);
-        setCurrentPage("threat-details");
-      }}
-    />
-  );
-}
+    if (currentPage === "threats") {
+      return (
+        <Threats
+          onBack={() => setCurrentPage("dashboard")}
+          onLogout={logout}
+          onSelectThreat={(id) => {
+            setSelectedThreatId(id);
+            setCurrentPage("threat-details");
+          }}
+        />
+      );
+    }
 
-if (currentPage === "add-threat") {
-  return (
-    <AddThreat
-      onBack={() => setCurrentPage("dashboard")}
-      onLogout={logout}
-    />
-  );
-}
-  return (
-    <Dashboard
-      onLogout={logout}
-      onNavigate={setCurrentPage}
-    />
-  );
-}
+    if (currentPage === "add-threat") {
+      return (
+        <AddThreat
+          onBack={() => setCurrentPage("dashboard")}
+          onLogout={logout}
+          onViewThreat={(id) => {
+            setSelectedThreatId(id);
+            setCurrentPage("threat-details");
+          }}
+        />
+      );
+    }
+
+    return (
+      <Dashboard
+        onLogout={logout}
+        onNavigate={(page, id) => {
+          if (id) setSelectedThreatId(id);
+          setCurrentPage(page);
+        }}
+      />
+    );
+  }
 
   return (
     <main className="login-page">

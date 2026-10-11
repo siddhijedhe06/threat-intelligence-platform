@@ -1,98 +1,151 @@
-
 /* =========================================
-   MAIN PAGE
+   THREAT DETAILS PAGE - DARK CYBERSECURITY THEME
 ========================================= */
 
 .threat-details-page {
   min-height: 100vh;
   width: 100%;
-  background: #f5f7fb;
-  color: #1f2937;
-  padding: 30px 40px 60px;
+  background: #080d19;
+  color: #f1f5fc;
+  padding: 30px 5% 60px;
   box-sizing: border-box;
 }
 
 .details-header,
 .details-content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
 /* =========================================
-   HEADER
+   HEADER & NAV
 ========================================= */
 
 .details-header {
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 }
 
-.details-header > div:first-child {
-  width: 100%;
+.details-top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-/* Buttons at top */
-
-.details-actions {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
-  gap: 10px !important;
-  width: 100% !important;
-  margin-bottom: 25px !important;
+.details-back-btn,
+.details-logout-btn {
+  padding: 10px 16px;
+  border: 1px solid #35435a;
+  border-radius: 8px;
+  background: #111d30;
+  color: #dce5f4;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s ease;
 }
 
-.details-actions p {
-  display: none !important;
+.details-back-btn:hover,
+.details-logout-btn:hover {
+  border-color: #52d6c8;
+  color: #52d6c8;
 }
 
-.details-actions button {
-  width: auto !important;
-  min-width: 90px !important;
-  height: 42px !important;
-  padding: 0 18px !important;
-  border: none !important;
-  border-radius: 7px !important;
-  background: #1f3c88 !important;
-  color: white !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
+.details-user-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
 }
 
-.details-actions button:first-child {
-  min-width: 190px !important;
+.details-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  border-bottom: 1px solid #26344a;
+  padding-bottom: 20px;
 }
 
-.details-actions button:last-child {
-  background: #e74c3c !important;
+.details-title-row h1 {
+  margin: 8px 0 0;
+  font-size: clamp(24px, 3.5vw, 32px);
+  color: #f1f5fc;
 }
 
-.details-actions button:first-child:hover {
-  background: #162d68 !important;
+.copy-report-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #19354d;
+  border: 1px solid #2f5678;
+  color: #6fe3d4;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-.details-actions button:last-child:hover {
-  background: #c0392b !important;
+.copy-report-btn:hover {
+  background: #234c6e;
+  border-color: #52d6c8;
 }
 
-/* Page title */
+/* =========================================
+   CRITICAL ALERT BANNER
+========================================= */
 
-.details-header h1 {
-  margin: 0 !important;
-  color: #1f2937 !important;
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  text-align: left !important;
+.critical-alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  background: #33151f;
+  border: 1px solid #7a2638;
+  color: #ffd0d7;
 }
 
-.details-header p {
-  margin: 6px 0 0 !important;
-  color: #64748b !important;
-  font-size: 15px !important;
-  text-align: left !important;
+.alert-banner-icon {
+  font-size: 28px;
+  color: #ff657b;
+  flex-shrink: 0;
+}
+
+.alert-banner-text {
+  flex: 1;
+}
+
+.alert-banner-text strong {
+  display: block;
+  font-size: 14px;
+  color: #ff7688;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.alert-banner-text p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #e5b3bd;
+}
+
+.view-alerts-banner-btn {
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: #ff526c;
+  color: #1a080d;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.view-alerts-banner-btn:hover {
+  background: #ff768b;
 }
 
 /* =========================================
@@ -100,308 +153,358 @@
 ========================================= */
 
 .threat-overview {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-  background: white !important;
-  padding: 25px 30px !important;
-  margin-bottom: 20px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07) !important;
-  box-sizing: border-box !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: #101a2b;
+  border: 1px solid #26344a;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 24px;
 }
 
 .details-label {
-  display: block !important;
-  margin-bottom: 7px !important;
-  color: #64748b !important;
-  font-size: 12px !important;
-  font-weight: 700 !important;
-  letter-spacing: 1px !important;
-  text-transform: uppercase !important;
+  display: block;
+  color: #7dded3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
-.threat-overview h2 {
-  margin: 0 !important;
-  color: #111827 !important;
-  font-size: 27px !important;
-  font-weight: 700 !important;
-  text-align: left !important;
-  word-break: break-all !important;
+.threat-indicator-info h2 {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 3vw, 28px);
+  color: #5ce6d6;
+  font-family: monospace;
+  word-break: break-all;
 }
 
-/* =========================================
-   SEVERITY
-========================================= */
+.indicator-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-pill {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.type-pill {
+  background: #172d42;
+  color: #76c5f0;
+  border: 1px solid #284a69;
+}
+
+.cat-pill {
+  background: #2a203d;
+  color: #c9abff;
+  border: 1px solid #433363;
+}
+
+.source-pill {
+  background: #192a34;
+  color: #92b8cb;
+  border: 1px solid #284352;
+}
+
+.threat-severity-badge-container {
+  text-align: right;
+  flex-shrink: 0;
+}
 
 .details-severity {
-  padding: 9px 20px !important;
-  border-radius: 20px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  white-space: nowrap !important;
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .details-severity.critical {
-  background: #fee2e2 !important;
-  color: #b91c1c !important;
+  background: #48232e;
+  color: #ff8595;
+  border: 1px solid #822c3c;
 }
 
 .details-severity.high {
-  background: #ffedd5 !important;
-  color: #c2410c !important;
+  background: #473421;
+  color: #ffc16d;
+  border: 1px solid #754519;
 }
 
 .details-severity.medium {
-  background: #fef3c7 !important;
-  color: #92400e !important;
+  background: #443d23;
+  color: #eddb79;
+  border: 1px solid #63581c;
 }
 
 .details-severity.low {
-  background: #dcfce7 !important;
-  color: #166534 !important;
+  background: #173d34;
+  color: #72e0b9;
+  border: 1px solid #215e4f;
 }
 
 /* =========================================
-   GRID
+   GRID & CARDS
 ========================================= */
 
 .details-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 20px !important;
-  width: 100% !important;
-  margin-bottom: 20px !important;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 24px;
 }
 
-/* =========================================
-   CARDS
-========================================= */
-
 .details-card {
-  width: 100% !important;
-  background: white !important;
-  padding: 25px 30px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07) !important;
-  box-sizing: border-box !important;
+  background: #101a2b;
+  border: 1px solid #26344a;
+  border-radius: 14px;
+  padding: 26px;
+  margin-bottom: 22px;
 }
 
 .details-card h3 {
-  margin: 0 0 18px !important;
-  padding-bottom: 12px !important;
-  border-bottom: 1px solid #e5e7eb !important;
-  color: #1f2937 !important;
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  text-align: left !important;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #202e42;
+  color: #f1f5fc;
+  font-size: 17px;
+  font-weight: 700;
 }
 
-/* =========================================
-   DETAIL ROWS
-========================================= */
-
 .detail-row {
-  display: grid !important;
-  grid-template-columns: 38% 62% !important;
-  align-items: center !important;
-  min-height: 48px !important;
-  border-bottom: 1px solid #e5e7eb !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid #1a273a;
+  font-size: 13px;
 }
 
 .detail-row:last-child {
-  border-bottom: none !important;
+  border-bottom: none;
 }
 
 .detail-row span {
-  padding: 12px 10px 12px 0 !important;
-  color: #64748b !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  text-align: left !important;
+  color: #8da1b9;
 }
 
 .detail-row strong {
-  padding: 12px 0 12px 10px !important;
-  color: #1f2937 !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  text-align: left !important;
-  word-break: break-word !important;
+  color: #e5edf7;
+  word-break: break-all;
+}
+
+.status-highlight {
+  color: #53d4ac !important;
 }
 
 /* =========================================
-   RISK CARD
+   RISK SCORE CARD
 ========================================= */
 
 .risk-card {
-  text-align: center !important;
+  display: flex;
+  flex-direction: column;
 }
 
-.risk-card h3 {
-  text-align: left !important;
+.risk-score-display {
+  text-align: center;
+  padding: 10px 0 20px;
 }
 
 .risk-score-large {
-  margin-top: 5px !important;
-  color: #dc2626 !important;
-  font-size: 44px !important;
-  font-weight: 800 !important;
-  line-height: 1.1 !important;
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.risk-score-large.critical {
+  color: #ff657b;
+}
+
+.risk-score-large.high {
+  color: #ffa75e;
+}
+
+.risk-score-large.medium {
+  color: #e8cf65;
+}
+
+.risk-score-large.low {
+  color: #53d4ac;
 }
 
 .risk-score-large span {
-  color: #64748b !important;
-  font-size: 22px !important;
-  font-weight: 600 !important;
+  font-size: 20px;
+  color: #64768f;
+  font-weight: 600;
+  margin-left: 4px;
 }
 
-.risk-card > p {
-  margin: 7px 0 22px !important;
-  color: #64748b !important;
-  font-size: 14px !important;
+.score-caption {
+  margin: 6px 0 0;
+  color: #8da1b9;
+  font-size: 12px;
 }
-
-/* =========================================
-   RISK FACTORS
-========================================= */
 
 .risk-factors {
-  display: grid !important;
-  grid-template-columns: repeat(5, 1fr) !important;
-  gap: 10px !important;
-  width: 100% !important;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: auto;
 }
 
-.risk-factors > div {
-  min-height: 85px !important;
-  padding: 12px 7px !important;
-  background: #f8fafc !important;
-  border-radius: 8px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  box-sizing: border-box !important;
+.factor-box {
+  background: #091422;
+  border: 1px solid #1d3047;
+  border-radius: 8px;
+  padding: 12px 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.risk-factors span {
-  color: #64748b !important;
-  font-size: 11px !important;
-  line-height: 1.3 !important;
-  text-align: center !important;
+.factor-box span {
+  font-size: 10px;
+  color: #899eb6;
+  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
-.risk-factors strong {
-  margin-top: 7px !important;
-  color: #1f3c88 !important;
-  font-size: 21px !important;
-  font-weight: 700 !important;
+.factor-box strong {
+  font-size: 18px;
+  color: #52d6c8;
+}
+
+.factor-box strong small {
+  font-size: 10px;
+  color: #5e748d;
 }
 
 /* =========================================
-   DESCRIPTION
+   REPORT CARD
 ========================================= */
+
+.report-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.report-card-header h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.report-card-header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #8da1b9;
+}
+
+.copy-small-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #172a3e;
+  border: 1px solid #284c66;
+  color: #6fe3d4;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.copy-small-btn:hover {
+  background: #213c58;
+}
+
+.full-report-pre {
+  background: #060b13;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #1c2b3e;
+  color: #d1e2f4;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 480px;
+  overflow-y: auto;
+}
 
 .description-text {
-  margin: 0 !important;
-  padding: 16px 18px !important;
-  background: #f8fafc !important;
-  border-left: 4px solid #1f3c88 !important;
-  border-radius: 6px !important;
-  color: #374151 !important;
-  font-size: 15px !important;
-  line-height: 1.6 !important;
-  text-align: left !important;
-  word-break: break-word !important;
+  color: #c5d4e6;
+  font-size: 14px;
+  line-height: 1.7;
+  background: #0a1322;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 3px solid #52d6c8;
 }
 
-/* =========================================
-   LOADING / ERROR
-========================================= */
+.details-message,
+.details-error {
+  padding: 60px;
+  text-align: center;
+  border-radius: 12px;
+}
 
 .details-message {
-  padding: 60px !important;
-  text-align: center !important;
-  color: #475569 !important;
-  font-size: 18px !important;
+  color: #52d6c8;
+  font-size: 16px;
 }
 
 .details-error {
-  padding: 40px !important;
-  margin-bottom: 20px !important;
-  text-align: center !important;
-  color: #dc2626 !important;
-  font-size: 18px !important;
-}
-
-/* Error page button */
-
-.threat-details-page > button {
-  display: block !important;
-  margin: 0 auto !important;
-  padding: 10px 18px !important;
-  border: none !important;
-  border-radius: 7px !important;
-  background: #1f3c88 !important;
-  color: white !important;
-  cursor: pointer !important;
+  color: #ff8595;
+  background: #33151f;
+  border: 1px solid #7a2638;
 }
 
 /* =========================================
    RESPONSIVE
 ========================================= */
 
-@media (max-width: 900px) {
-
-  .threat-details-page {
-    padding: 25px 20px 50px !important;
-  }
-
+@media (max-width: 950px) {
   .details-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
 
   .risk-factors {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-
-  .threat-details-page {
-    padding: 20px 12px 40px !important;
-  }
-
-  .details-actions {
-    justify-content: flex-start !important;
-  }
-
-  .details-actions button:first-child {
-    min-width: 0 !important;
-  }
-
-  .details-header h1 {
-    font-size: 26px !important;
-  }
-
+@media (max-width: 650px) {
   .threat-overview {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 15px !important;
-    padding: 20px !important;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .details-card {
-    padding: 20px !important;
+  .threat-severity-badge-container {
+    text-align: left;
   }
 
-  .detail-row {
-    grid-template-columns: 42% 58% !important;
+  .details-title-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .risk-factors {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .critical-alert-banner {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

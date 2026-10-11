@@ -1,3 +1,5 @@
+import os
+import sys
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
@@ -10,6 +12,17 @@ from auth import (
     get_current_user,
     require_role
 )
+
+try:
+    from analysis import analyze_threat_indicator
+except ImportError:
+    try:
+        analysis_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "analysis-service"))
+        if os.path.exists(analysis_dir) and analysis_dir not in sys.path:
+            sys.path.append(analysis_dir)
+        from analysis import analyze_threat_indicator
+    except Exception:
+        analyze_threat_indicator = None
 
 app = FastAPI(
     title="Cybersecurity Threat Intelligence Platform",
@@ -129,7 +142,8 @@ def get_critical_threats(
 
     return {
         "count": len(threats),
-        "critical_threats": threats
+        "critical_threats": threats,
+        "threats": threats
     }
 
 @app.get("/threats/{threat_id}")
@@ -428,17 +442,20 @@ def create_threat(
     connection.close()
 
 
-    # ------------------------------------------------
     # STEP 2: Send threat to Analysis Service
     # ------------------------------------------------
 
     analysis_status = "Analysis service not contacted"
     analysis_result = None
 
-    try:
+    analysis_service_url = os.getenv(
+        "ANALYSIS_SERVICE_URL",
+        "http://127.0.0.1:8001"
+    )
 
+    try:
         response = httpx.post(
-            f"http://analysis-service:8001/analyze/{threat_id}",
+            f"{analysis_service_url}/analyze/{threat_id}",
             json={
                 "threat_id": threat_id,
                 "source_score": threat.source_score,
@@ -451,28 +468,102 @@ def create_threat(
         )
 
         if response.status_code == 200:
-
             analysis_status = "Analysis completed"
-
             analysis_result = response.json()
-
         else:
-
             analysis_status = "Analysis service returned an error"
 
     except Exception as e:
+        if analyze_threat_indicator is not None:
+            try:
+                # Fallback to direct intelligence analysis
+                override_scores = None
+                if not (
+                    threat.source_score == 15
+                    and threat.severity_score == 15
+                    and threat.frequency_score == 10
+                    and threat.recency_score == 10
+                    and threat.corroboration_score == 5
+                ):
+                    override_scores = {
+                        "source_score": threat.source_score,
+                        "severity_score": threat.severity_score,
+                        "frequency_score": threat.frequency_score,
+                        "recency_score": threat.recency_score,
+                        "corroboration_score": threat.corroboration_score,
+                    }
 
-        analysis_status = f"Analysis service unavailable: {str(e)}"
+                analysis_res = analyze_threat_indicator(
+                    indicator=threat.indicator,
+                    indicator_type=threat.indicator_type,
+                    source=threat.source or "",
+                    description=threat.description or "",
+                    override_scores=override_scores
+                )
 
+                fb_conn = get_db_connection()
+                fb_cur = fb_conn.cursor()
+                fb_sql = """
+                    INSERT INTO threat_analysis
+                    (threat_id, category, risk_score, severity, source_score, severity_score, frequency_score, recency_score, corroboration_score, analysis_details)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """
+                fb_cur.execute(fb_sql, (
+                    threat_id,
+                    analysis_res["category"],
+                    analysis_res["risk_score"],
+                    analysis_res["severity"],
+                    analysis_res["source_score"],
+                    analysis_res["severity_score"],
+                    analysis_res["frequency_score"],
+                    analysis_res["recency_score"],
+                    analysis_res["corroboration_score"],
+                    analysis_res["analysis_details"]
+                ))
+                fb_conn.commit()
 
-    # ------------------------------------------------
-    # STEP 3: Return complete result
-    # ------------------------------------------------
+                if analysis_res["risk_score"] >= 80:
+                    alert_sql = """
+                        INSERT INTO alerts (threat_id, alert_type, message, severity, status)
+                        VALUES (%s, %s, %s, %s, %s)
+                    """
+                    alert_msg = f"Critical threat detected. Category: {analysis_res['category']}, Risk Score: {analysis_res['risk_score']}"
+                    fb_cur.execute(alert_sql, (
+                        threat_id,
+                        "High Risk Threat",
+                        alert_msg,
+                        analysis_res["severity"],
+                        "Open"
+                    ))
+                    fb_conn.commit()
+
+                fb_cur.close()
+                fb_conn.close()
+
+                analysis_status = "Analysis completed"
+                analysis_result = {
+                    "threat_id": threat_id,
+                    "category": analysis_res["category"],
+                    "risk_score": analysis_res["risk_score"],
+                    "severity": analysis_res["severity"],
+                    "source_score": analysis_res["source_score"],
+                    "severity_score": analysis_res["severity_score"],
+                    "frequency_score": analysis_res["frequency_score"],
+                    "recency_score": analysis_res["recency_score"],
+                    "corroboration_score": analysis_res["corroboration_score"],
+                    "analysis_details": analysis_res["analysis_details"],
+                    "alert_status": "Alert created" if analysis_res["risk_score"] >= 80 else "No alert required"
+                }
+            except Exception as inner_e:
+                analysis_status = f"Analysis service unavailable: {str(e)} (fallback: {str(inner_e)})"
+        else:
+            analysis_status = f"Analysis service unavailable: {str(e)}"
 
     return {
         "message": "Threat added successfully",
         "threat_id": threat_id,
         "analysis_status": analysis_status,
+        "analysis_result": analysis_result,
         "analysis": analysis_result
     }
 

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: threat-platform-config
+  namespace: threat-platform
+data:
+  ANALYSIS_SERVICE_URL: "http://analysis-service:8001"
+  ALERT_SERVICE_URL: "http://alert-service:8002"

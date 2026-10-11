@@ -434,3 +434,49 @@ td {
   color: #63e0d0;
 }
 
+.user-role-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #172a3e;
+  border: 1px solid #264a59;
+  color: #52d6c8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.score-pill-critical {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #3b1722;
+  color: #ff7688;
+  border: 1px solid #702636;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.clickable-threat-row {
+  transition: background 0.15s ease;
+}
+
+.clickable-threat-row:hover {
+  background: #16263f !important;
+}
+
+.view-report-link {
+  padding: 6px 12px;
+  border: 1px solid #36506c;
+  background: #16253c;
+  color: #6fe3d4;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.view-report-link:hover {
+  background: #233b5c;
+  border-color: #52d6c8;
+}
+
