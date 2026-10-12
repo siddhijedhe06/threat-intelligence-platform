@@ -16,35 +16,36 @@ spec:
       containers:
         - name: api-gateway
           image: ghcr.io/siddhijedhe06/threat-api-gateway:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
           env:
-          - name: DB_HOST
-            value: host.docker.internal
+            - name: DB_HOST
+              value: host.docker.internal
 
-          - name: DB_USER
-            valueFrom:
-            secretKeyRef:
-            name: mysql-secret
-            key: DB_USER
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: DB_USER
 
-          - name: DB_PASSWORD
-            valueFrom:
-            secretKeyRef:
-            name: mysql-secret
-            key: DB_PASSWORD
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: DB_PASSWORD
 
-          - name: DB_NAME
-            valueFrom:
-            secretKeyRef:
-            name: mysql-secret
-            key: DB_NAME
-          
-          - name: ANALYSIS_SERVICE_URL
-            valueFrom:
-            configMapKeyRef:
-            name: threat-platform-config
-            key: ANALYSIS_SERVICE_URL
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: DB_NAME
+            
+            - name: ANALYSIS_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: threat-platform-config
+                  key: ANALYSIS_SERVICE_URL
 ---
 apiVersion: v1
 kind: Service

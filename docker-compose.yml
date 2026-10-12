@@ -11,6 +11,7 @@ services:
       DB_USER: root
       DB_PASSWORD: "Root123"
       DB_NAME: threat_intelligence_db
+      ANALYSIS_SERVICE_URL: http://analysis-service:8001
     depends_on:
       - analysis-service
       - alert-service
@@ -26,6 +27,7 @@ services:
       DB_USER: root
       DB_PASSWORD: "Root123"
       DB_NAME: threat_intelligence_db
+      ALERT_SERVICE_URL: http://alert-service:8002
     depends_on:
       - alert-service
 
